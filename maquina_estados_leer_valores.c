@@ -1,20 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 
 char A_N [9];
 char A_S [46];
 char E [];
-char As [];
 char temp[];
-int j=11;
+int k=11;
 int m=47;
-bool flag_A_N=false;
+
 
 
 enum continentes {
-	AMERICA_NORTE, AMERICA_SUR, EUROPA, ASIA, FINAL
+	AMERICA_NORTE, AMERICA_SUR, EUROPA, FINAL
 };
 
 
@@ -72,31 +70,47 @@ int main(int argc, char *argv[]) {
 		
 		A_N[i]=text[i];
 		printf("%c",A_N[i]);
-		flag_A_N=true;
-		break;
+		
 	}
 	
 	printf("\n");
 	
 	
 	//Muestra numeros de AMERICA DEL SUR
-	for (int k=0;k<j;j++){
+	/*for (int k=0;k<j;k++){
 		for(j;j<46;j++){
 		A_S[k]=text[j];
 		printf("%c",A_S[k]);
 		
 		}
+	}*/
+	while(k<46){
+		for(int j=0;j<35;j++){
+			A_S[j]=text[k];
+			printf("%c",A_S[j]);
+			k++;
+		}
+		
 	}
 	
 	printf("\n");
 	
 	//Muestra numeros de EUROPA
-	for (int l=0;l<m;m++){
+	/*for (int l=0;l<m;m++){
 		for(m;m<97;m++){
 			E[l]=text[m];
 			printf("%c",E[l]);
 			
 		}
+	}*/
+	
+	while(m<47){
+		for(int l=0;l<96;l++){
+			A_S[l]=text[m];
+			printf("%c",A_S[l]);
+			m++;
+		}
+		
 	}
 	
 	
@@ -110,22 +124,44 @@ int main(int argc, char *argv[]) {
 		switch(estado_actual){
 			
 		case AMERICA_NORTE:
-			if(flag_A_N==true){
-				printf("Estas en AMERICA DEL NORTE");
+			for(int a=0;a<10;a++){
+				if(A_N[0]=='1'){
+					printf("\nEstas en AMERICA DEL NORTE");
+					
+				}
+				
 			}
+			estado_actual=AMERICA_SUR;
+			
+			
 			break;
 			
 		case AMERICA_SUR:
+			for(int b=0;b<46;b++){
+				if(A_S[0]=='1'){
+					printf("\nEstas en AMERICA DEL SUR");
+					break;
+				}
+				
+			}
+			estado_actual=EUROPA;
 			break;
 			
 		case EUROPA:
-			break;
+			for(int c=0;c<97;c++){
+				if(E[0]=='4'){
+					printf("\nEstas en EUROPA\n");
+					break;
+				}
+				
+			}
 			
-		case ASIA:
+			estado_actual=AMERICA_NORTE;
 			break;
-			
 			
 		case FINAL:
+			printf("Estas en el estado FINAL\n\n\n");
+				
 			break;
 			
 		default:
